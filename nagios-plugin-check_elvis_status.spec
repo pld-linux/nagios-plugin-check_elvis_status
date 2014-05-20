@@ -3,12 +3,12 @@
 %include	/usr/lib/rpm/macros.php
 Summary:	Nagios plugin to check Elvis DAM status
 Name:		nagios-plugin-%{plugin}
-Version:	0.1
-Release:	2
+Version:	0.2
+Release:	1
 License:	GPL v2
 Group:		Networking
-Source0:	%{plugin}.php
-Source1:	%{plugin}.cfg
+Source0:	https://github.com/glensc/nagios-plugin-check_elvis_status/archive/v%{version}/%{plugin}-%{version}.tar.gz
+# Source0-md5:	a0ecef927a2fc9c7c3982c626757586f
 URL:		https://github.com/glensc/nagios-plugin-check_elvis_status
 Requires:	nagios-common
 Requires:	nagios-plugins-libs
@@ -16,9 +16,6 @@ Requires:	php(core) >= %{php_min_version}
 Requires:	php(json)
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
-
-# for perl plugins:
-%define		_noautoreq	perl(utils)
 
 %define		_sysconfdir	/etc/nagios/plugins
 %define		plugindir	%{_prefix}/lib/nagios/plugins
@@ -28,14 +25,12 @@ Nagios plugin to check Elvis DAM status via admin /server-status json
 data.
 
 %prep
-%setup -qcT
-cp -p %{SOURCE0} %{plugin}
-cp -p %{SOURCE1} .
+%setup -q
 
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{_sysconfdir},%{plugindir}}
-install -p %{plugin} $RPM_BUILD_ROOT%{plugindir}/%{plugin}
+install -p %{plugin}.php $RPM_BUILD_ROOT%{plugindir}/%{plugin}
 cp -p %{plugin}.cfg $RPM_BUILD_ROOT%{_sysconfdir}/%{plugin}.cfg
 
 %clean
