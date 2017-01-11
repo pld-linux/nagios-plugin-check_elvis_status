@@ -3,12 +3,12 @@
 %include	/usr/lib/rpm/macros.php
 Summary:	Nagios plugin to check Elvis DAM status
 Name:		nagios-plugin-%{plugin}
-Version:	0.2
+Version:	0.3
 Release:	1
 License:	GPL v2
 Group:		Networking
 Source0:	https://github.com/glensc/nagios-plugin-check_elvis_status/archive/v%{version}/%{plugin}-%{version}.tar.gz
-# Source0-md5:	a0ecef927a2fc9c7c3982c626757586f
+# Source0-md5:	14d04b1629a4082aa7cd94eccc897bbb
 URL:		https://github.com/glensc/nagios-plugin-check_elvis_status
 Requires:	nagios-common
 Requires:	nagios-plugins-libs
