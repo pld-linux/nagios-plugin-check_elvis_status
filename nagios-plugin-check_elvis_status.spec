@@ -1,6 +1,5 @@
 %define		plugin	check_elvis_status
 %define		php_min_version 5.2.0
-%include	/usr/lib/rpm/macros.php
 Summary:	Nagios plugin to check Elvis DAM status
 Name:		nagios-plugin-%{plugin}
 Version:	0.3
